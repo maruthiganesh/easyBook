@@ -13,10 +13,5 @@ import { Component } from "@angular/core";
 )
 
 export class MovieCardComponent{
-    Movie: any ={
-    "Id": "1",
-    "Type":"movie",
-    "Price":"250"
 
-    }
 }
