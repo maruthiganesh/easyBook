@@ -7,11 +7,14 @@
 </head>
 <body>
     <div class="card" style="width: 18rem;">
-        <img src="EASYBOOK-APP/images/movie.jpg" class="card-img-top" alt="image">
+        <div class="img-wrapper">
+            <img src="images/8728.jpg" class="card-img-top" alt="image">
+        </div>
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h2 class="card-title">{{movie_details.Name}}</h2>
+          <p class="card-text">Genre: {{movie_details.Genre}}</p>
+          <p class="card-text">Price: {{movie_details.Price}}</p>
+          <a href="#" class="btn btn-primary">Book Now</a>
         </div>
       </div>
 </body>

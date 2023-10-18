@@ -1,17 +1,9 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-movie-list',
-  templateUrl: './movie-list.component.html',
-  styleUrls: ['./movie-list.component.css']
-})
-export class MovieListComponent {
-
-  Movie: Array<any> = [
+[
     
     {
     "Id": "1",
     "Name":"Leo",
+    "Genre":"Action/Thriller",
     "Type":"movie",
     "Price":"250"
 
@@ -20,13 +12,15 @@ export class MovieListComponent {
     {
       "Id": "2",
       "Name":"Marvels",
+      "Genre":"Action",
       "Type":"movie",
       "Price":"300"
   
     },
     {
         "Id": "3",
-        "Name":"RRR",
+        "Name":"Mad",
+        "Genre":"Comedy/Drama",
         "Type":"movie",
         "Price":"250"
     
@@ -34,6 +28,7 @@ export class MovieListComponent {
     {
           "Id": "4",
           "Name":"Kalki",
+          "Genre":"Sci-fi",
           "Type":"movie",
           "Price":"250"
       
@@ -41,12 +36,19 @@ export class MovieListComponent {
     {
             "Id": "5",
             "Name":"OMG 2",
+            "Genre":"Sci-fi",
             "Type":"movie",
             "Price":"250"
         
+    },
+    {
+      "Id": "6",
+      "Name":"Spyderman",
+      "Genre":"Action",
+      "Type":"movie",
+      "Price":"300"
+  
     }
   
   
   ]
-
-}
