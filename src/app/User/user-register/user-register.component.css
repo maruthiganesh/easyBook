@@ -1,0 +1,15 @@
+button{
+    margin-right: 10px;
+}
+
+.card-header{
+    background-color: rgb(212, 15, 74);
+    font-weight: bold;
+    color: white;
+}
+.row{
+    margin-top: 10%;
+}
+.card{
+    border-radius: 3%;
+}
