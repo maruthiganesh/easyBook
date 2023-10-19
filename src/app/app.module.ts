@@ -13,6 +13,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { MyBookingsComponent } from './my-bookings/my-bookings.component';
 import { UserLoginComponent } from './User/user-login/user-login.component';
 import { UserRegisterComponent } from './User/user-register/user-register.component';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from './pipe/filter.pipe';
+import { SortPipe } from './pipe/sort.pipe';
+
 
 const appRoutes:Routes=[
   {path: '', component: MovieListComponent},
@@ -30,12 +34,16 @@ const appRoutes:Routes=[
     MyBookingsComponent,
     UserLoginComponent,
     UserRegisterComponent,
+    FilterPipe,
+    SortPipe,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [MovieService],

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {FormGroup} from '@angular/forms';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
