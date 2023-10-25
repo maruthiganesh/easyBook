@@ -5,16 +5,19 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: any[], filterString:string, movieName:string): any[] {
+  transform(value: any[], filter:Array<any>): any[] {
     const resultArray=[];
-    if(value.length===0 ||filterString==='' || movieName==='')
+    if(filter.length===0)
     return value;
+  console.log(filter);
   for(const item of value){
-    if(item[movieName]===filterString)
+    
+    if(filter.includes(item['City']))
     {
       resultArray.push(item);
     }
   }
+  console.log(resultArray);
   return resultArray;
   }
 

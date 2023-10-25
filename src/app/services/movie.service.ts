@@ -1,14 +1,57 @@
+// import { Injectable } from '@angular/core';
+// import { HttpClient } from '@angular/common/http';
+// import { map } from 'rxjs/operators';
+// import { Observable, BehaviorSubject } from 'rxjs';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+
+// export class MovieService {
+
+//   constructor(private http:HttpClient) { }
+
+//   getAllDetails(): Observable<MovieDetails[]> {
+//     return this.http.get<MovieDetails>('data/movie_details.json').pipe(
+//       map((data: MovieDetails) => {
+//         const movieArray: MovieDetails[] = Object.values(data);
+//         return movieArray;
+//       })
+//     );
+//   }
+
+//   private checkedArraySource = new BehaviorSubject<Array<any>>([]);
+//   checkedArray$ = this.checkedArraySource.asObservable();
+
+//   updateCheckedArray(checkedArray: Array<any>) {
+//     this.checkedArraySource.next(checkedArray);
+// }
+// }
+// interface MovieDetails {
+  
+//   ID: string;
+//   Name: string;
+//   Genre:string;
+//   Type:string;
+//   Price:string;
+//   City:string;
+
+// }
+
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class MovieService {
+  checkedArray$: BehaviorSubject<Array<any>> = new BehaviorSubject<Array<any>>([]); // Initialize with an empty array
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getAllDetails(): Observable<MovieDetails[]> {
     return this.http.get<MovieDetails>('data/movie_details.json').pipe(
@@ -18,13 +61,17 @@ export class MovieService {
       })
     );
   }
+
+  updateCheckedArray(checkedArray: Array<any>) {
+    this.checkedArray$.next(checkedArray); // Update the BehaviorSubject directly
+  }
 }
+
 interface MovieDetails {
-  
   ID: string;
   Name: string;
-  Genre:string;
-  Type:string;
-  Price:string;
-
+  Genre: string;
+  Type: string;
+  Price: string;
+  City: string;
 }
