@@ -5,7 +5,7 @@
         Register
       </div>
       <div class="card-body">
-        <form>
+        <form [formGroup]="registrationForm" (ngSubmit)= "onSubmit()" >
         
           <div class="form-group col-12">
               <label for="name" class="form-label">Name</label>
