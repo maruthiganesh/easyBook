@@ -6,16 +6,33 @@
   >
     <div class="card-body">
       <h5 class="card-title">Login</h5>
-      <form onSubmit="{submissionHandler}">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group col-12">
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control" formControlName="email">
+            <span *ngIf="!email.valid && (isSubmitted || email.touched)" class="error-block">
+              <span *ngIf="email.hasError('required')">
+                Please Provide email id
+              </span>
+              <span *ngIf="email.hasError('email')">
+                Please Provide valid email id
+              </span>
+          </span>
         </div>
 
         <br />
         <div class="form-group col-12">
             <label for="passwrod" class="form-label">Password</label>
             <input type="password" class="form-control" formControlName="password">
+            <span *ngIf="!password.valid && (isSubmitted || password.touched)" class="error-block">
+              <span *ngIf="password.hasError('required')">
+                Please Provide password
+              </span>
+              <span *ngIf="password.hasError('minlength')">
+                Password must contain alteast 8 charecters
+              </span>
+          </span>
+
             </div>
         <a
           href="#"

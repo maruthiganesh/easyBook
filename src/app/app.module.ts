@@ -7,6 +7,9 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MovieService } from './services/movie.service';
+import {UserService} from './services/user.service';
+import {AlertifyService} from './services/alertify.service';
+import {AuthService} from './services/auth.service';
 import { MovieListComponent } from './movie-list/movie-list.component';
 
 import { Routes, RouterModule } from '@angular/router';
@@ -46,7 +49,7 @@ const appRoutes:Routes=[
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [MovieService],
+  providers: [MovieService,UserService,AlertifyService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

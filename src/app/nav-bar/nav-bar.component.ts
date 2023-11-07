@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MovieService } from '../services/movie.service';
 import { take } from 'rxjs';
+import { AlertifyService } from '../services/alertify.service';
+
 
 let mapper = new Map();
 mapper.set("id_blore", "Bangalore");
@@ -14,7 +16,7 @@ mapper.set("id_kol", "Kolkata");
 })
 export class NavBarComponent {
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, private alerter:AlertifyService) { }
 
   onChange(event: any) {
     let element = event.target;
@@ -44,5 +46,13 @@ export class NavBarComponent {
         }
       });
     }
+  }
+
+  loggedin(){
+    return localStorage.getItem('token');
+  }
+  onLogout(){
+    localStorage.removeItem('token');
+    this.alerter.success('logged out Successfully');
   }
 }

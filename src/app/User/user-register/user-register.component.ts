@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { User } from 'src/app/model/user';
+import { AlertifyService } from 'src/app/services/alertify.service';
+import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-user-register',
@@ -8,8 +12,12 @@ import { FormControl, FormGroup, Validators, ValidationErrors, ValidatorFn } fro
 })
 export class UserRegisterComponent implements OnInit {
   registrationForm!: FormGroup;
+  user!: User;
+  isSubmitted:boolean=false;
 
-  constructor() {}
+  constructor(private userService:UserService,private alertify:AlertifyService) {
+
+  }
 
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
@@ -18,18 +26,67 @@ export class UserRegisterComponent implements OnInit {
       password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
       confirmPassword: new FormControl(null, Validators.required),
       mobile: new FormControl(null, [Validators.required, Validators.maxLength(10)]),
+    }, {
+      validators: this.passwordMatchingValidator
     });
-
-    // Use the setValidators method to add the custom validator to the confirmPassword control
-    // this.registrationForm.get('confirmPassword')?.setValidators(this.passwordMatchingValidator());
   }
 
-  // passwordMatchingValidator(fg:FormGroup): Validators{
-  //   return fg.get('password').value === fg.get('confirmPassword').value ? null : {notMatched: true};
+  passwordMatchingValidator: ValidatorFn = (control: AbstractControl): { [key: string]: any } | null => {
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
 
-  // }
+    return password === confirmPassword ? null : { notmatched: true };
+  };
+
+  userData():User{
+    return this.user = {
+        userName: this.userName.value,
+        email: this.email.value,
+        password: this.password.value,
+        mobile: this.mobile.value
+    };
+
+  }
+get userName()
+{
+  return this.registrationForm.get('userName') as FormControl
+}
+
+get password()
+{
+  return this.registrationForm.get('password') as FormControl
+}
+
+get confirmPassword()
+{
+  return this.registrationForm.get('confirmPassword') as FormControl
+}
+
+get email()
+{
+  return this.registrationForm.get('email') as FormControl
+}
+
+get mobile()
+{
+  return this.registrationForm.get('mobile') as FormControl
+}
+
 
   onSubmit() {
-    // Your form submission logic here
+    this.isSubmitted=true;
+    console.log(this.registrationForm.value);
+    if(this.registrationForm.valid){
+    // this.user=Object.assign(this.user,this.registrationForm.value);
+    this.userService.addUser(this.userData());
+    this.registrationForm.reset();
+    this.isSubmitted=false;
+    this.alertify.success("User Registered Successfully !!!")
+    }
+    else{
+      this.alertify.error("Kindly provide required fields to Register !!!")
+    }
   }
+
+  
 }
