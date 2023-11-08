@@ -19,13 +19,17 @@ import { UserRegisterComponent } from './User/user-register/user-register.compon
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { FilterPipe } from './pipe/filter.pipe';
 import { SortPipe } from './pipe/sort.pipe';
-
+import { TheaterDetailsComponent } from './theater-details/theater-details/theater-details.component';
+import { TheaterCardComponent } from './theater-card/theater-card/theater-card.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatePipe } from '@angular/common';
 
 const appRoutes:Routes=[
   {path: '', component: MovieListComponent},
   {path:'my-bookings',component:MyBookingsComponent},
   {path:'login',component:UserLoginComponent},
-  {path:'register',component:UserRegisterComponent}
+  {path:'register',component:UserRegisterComponent},
+  {path:'movie-details/:id',component:TheaterDetailsComponent}
 ]
 
 @NgModule({
@@ -39,6 +43,8 @@ const appRoutes:Routes=[
     UserRegisterComponent,
     FilterPipe,
     SortPipe,
+    TheaterDetailsComponent,
+    TheaterCardComponent,
 
   ],
   imports: [
@@ -47,9 +53,10 @@ const appRoutes:Routes=[
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule
   ],
-  providers: [MovieService,UserService,AlertifyService,AuthService],
+  providers: [MovieService,UserService,AlertifyService,AuthService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

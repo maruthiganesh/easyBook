@@ -62,6 +62,15 @@ export class MovieService {
     );
   }
 
+  getTheaterDetails(): Observable<TheaterDetails[]> {
+    return this.http.get<TheaterDetails>('data/theater_details.json').pipe(
+      map((data: TheaterDetails) => {
+        const theaterArray: TheaterDetails[] = Object.values(data);
+        return theaterArray;
+      })
+    );
+  }
+
   updateCheckedArray(checkedArray: Array<any>) {
     this.checkedArray$.next(checkedArray); // Update the BehaviorSubject directly
   }
@@ -72,6 +81,15 @@ interface MovieDetails {
   Name: string;
   Genre: string;
   Type: string;
-  Price: string;
+  Language:string;
+  Rating:string;
+  Duration:string;
+  Release_date:string;
   City: string;
+}
+
+interface TheaterDetails{
+  tName:string;
+  tLocation:string;
+  tMovies:object;
 }

@@ -1,6 +1,7 @@
 
 
 import { Component , Input} from "@angular/core";
+
 @Component(
 
     {
@@ -13,5 +14,11 @@ import { Component , Input} from "@angular/core";
 )
 
 export class MovieCardComponent{
+   
     @Input () movie_details: any 
+
+    // clickOnCard()
+    // {
+    //     this.router.navigate([details']);
+    // }
 }

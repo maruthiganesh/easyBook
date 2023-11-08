@@ -1,0 +1,9 @@
+.datebox{
+    border-top :none;
+    border-left: none;
+    border-right: none;
+    background-color: #bdbbeb ;
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 5px;
+    border-color: black;
+}

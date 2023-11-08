@@ -7,8 +7,8 @@
         <div class="card-body">
           <h2 class="card-title">{{movie_details.Name}}</h2>
           <p class="card-text">Genre: {{movie_details.Genre}}</p>
-          <p class="card-text">Price: {{movie_details.Price}}</p>
-          <a href="#" class="btn btn-primary">Book Now</a>
+          <p class="card-text">Language: {{movie_details.Language}}</p>
+          <a  class="btn btn-primary" routerLink="/movie-details/{{movie_details.Name}}">Book Now</a>
         </div>
       </div>
 </body>

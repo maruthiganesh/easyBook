@@ -1,0 +1,230 @@
+[
+    {
+        "tName":"Asian Mukund",
+        "tLocation":"Hyderabad",
+        "tMovies":[{
+                    "screen1":[{
+                        "Spyderman":{
+                            "timings":["10:00 AM","06:00 PM"],
+                            "price":[200,100,50],
+                            "total_seats":250,
+                            "booked_seats":[0,0]
+                        },
+                        "Kalki":{
+                            "timings":["12:30 PM","09:00 PM"],
+                            "price":[200,100,50],
+                            "total_seats":250,
+                            "booked_seats":[0,0]
+                        }
+                    }]   
+                }]
+        
+    },
+
+    {
+        "tName":"INOX",
+        "tLocation":"Hyderabad",
+        "tMovies":[{
+                    "screen1":[{
+                        "Spyderman":{
+                            "timings":["10:00 AM","06:00 PM"],
+                            "price":[300],
+                            "total_seats":150,
+                            "booked_seats":[0,0]
+                        }
+                    }],
+
+                    "screen2":[{
+                        "Kalki":{
+                            "timings":["12:30 PM","09:00 PM"],
+                            "price":[300],
+                            "total_seats":150,
+                            "booked_seats":[0,0]
+                        }
+                    }],
+                    
+                    "screen3":[{
+                        "Marvels":{
+                            "timings":["09:30 AM","02:00 PM"],
+                            "price":[300],
+                            "total_seats":150,
+                            "booked_seats":[0,0]
+                        }
+                    }]
+                }]
+        
+    },
+
+
+    {
+        "tName":"Miraj Balaji Cinemas",
+        "tLocation":"Bangalore",
+        "tMovies":[{
+                    "screen1":[{
+                        "Leo":{
+                            "timings":["10:00 AM","01:30 PM","06:00 PM","09:30 PM"],
+                            "price":[200,100,50],
+                            "total_seats":250,
+                            "booked_seats":[0,0,0,0]
+                        }
+                    }]   
+                }]
+        
+    },
+
+
+    {
+        "tName":"JP Cinemas",
+        "tLocation":"Bangalore",
+        "tMovies":[{
+                    "screen1":[{
+                        "Leo":{
+                            "timings":["10:00 AM","02:00 PM","09:00 PM"],
+                            "price":[300],
+                            "total_seats":150,
+                            "booked_seats":[0,0,0]
+                        }
+                    }],
+                    "screen2":[{
+                        "Mad":{
+                            "timings":["10:00 AM","02:00 PM","09:00 PM"],
+                            "price":[300],
+                            "total_seats":150,
+                            "booked_seats":[0,0,0]
+                        }
+                    }]
+                }]
+        
+    },
+
+
+    {
+        "tName":"Radhika Theater",
+        "tLocation":"Hyderabad",
+        "tMovies":[{
+                    "screen1":[{
+                        "Spyderman":{
+                            "timings":["10:00 AM","01:30 PM","06:00 PM","09:30 PM"],
+                            "price":[200,100,50],
+                            "total_seats":250,
+                            "booked_seats":[0,0,0,0]
+                        }
+                    }],
+                    "screen2":[{
+                        "Kalki":{
+                            "timings":["10:00 AM","01:30 PM","06:00 PM","09:30 PM"],
+                            "price":[200,100,50],
+                            "total_seats":250,
+                            "booked_seats":[0,0,0,0]
+                        }
+                    }]      
+                }]
+        
+    },
+
+
+    {
+        "tName":"Roshan Theater",
+        "tLocation":"Kolkata",
+        "tMovies":[{
+                    "screen1":[{
+                        "OMG2":{
+                            "timings":["10:00 AM","01:30 PM","06:00 PM","09:30 PM"],
+                            "price":[200,100,50],
+                            "total_seats":200,
+                            "booked_seats":[0,0,0,0]
+                        }
+                    }]   
+                }]
+        
+    },
+
+
+
+    {
+        "tName":"Vimal Theater",
+        "tLocation":"Kolkata",
+        "tMovies":[{
+                    "screen1":[{
+                        "OMG2":{
+                            "timings":["10:00 AM","02:30 PM","08:30 PM"],
+                            "price":[200,100,50],
+                            "total_seats":200,
+                            "booked_seats":[0,0,0]
+                        }
+                    }]   
+                }]
+        
+    },
+
+
+
+    {
+        "tName":"Asian Cine-Planet",
+        "tLocation":"Hyderabad",
+        "tMovies":[{
+                    "screen1":[{
+                        "Spyderman":{
+                            "timings":["10:00 AM","02.30 PM","07:00 PM"],
+                            "price":[200,100,50],
+                            "total_seats":250,
+                            "booked_seats":[0,0,0]
+                        }
+                    }],
+                    "screen2":[{
+                        "Kalki":{
+                            "timings":["10:00 AM","02.30 PM","07:00 PM"],
+                            "price":[200,100,50],
+                            "total_seats":250,
+                            "booked_seats":[0,0,0]
+                        }
+                    }]   
+                 }]
+        
+    },
+
+
+
+    {
+        "tName":"Sandhya Theater",
+        "tLocation":"Bangalore",
+        "tMovies":[{
+                    "screen1":[{
+                        "Leo":{
+                            "timings":["10:00 AM","02:00 PM","09:00 PM"],
+                            "price":[200,100,50],
+                            "total_seats":250,
+                            "booked_seats":[0,0,0]
+                        }
+                    }],
+                    "screen2":[{
+                        "Mad":{
+                            "timings":["10:00 AM","02:00 PM","09:00 PM"],
+                            "price":[200,100,50],
+                            "total_seats":250,
+                            "booked_seats":[0,0,0]
+                        }
+                    }] 
+                    }]
+        
+    },
+
+
+
+    {
+        "tName":"Kisan Talkies",
+        "tLocation":"Kolkata",
+        "tMovies":[{
+                    "screen1":[{
+                        "OMG2":{
+                            "timings":["10:00 AM","06:00 PM"],
+                            "price":[200,100,50],
+                            "total_seats":250,
+                            "booked_seats":[0,0]
+                        }
+                    }]   
+                    }]
+        
+    }
+]
+    
