@@ -23,13 +23,15 @@ import { TheaterDetailsComponent } from './theater-details/theater-details/theat
 import { TheaterCardComponent } from './theater-card/theater-card/theater-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
+import { SeatingComponent } from './seating/seating/seating.component';
 
 const appRoutes:Routes=[
   {path: '', component: MovieListComponent},
   {path:'my-bookings',component:MyBookingsComponent},
   {path:'login',component:UserLoginComponent},
   {path:'register',component:UserRegisterComponent},
-  {path:'movie-details/:id',component:TheaterDetailsComponent}
+  {path:'movie-details/:id',component:TheaterDetailsComponent},
+  {path:'seating',component:SeatingComponent}
 ]
 
 @NgModule({
@@ -45,6 +47,7 @@ const appRoutes:Routes=[
     SortPipe,
     TheaterDetailsComponent,
     TheaterCardComponent,
+    SeatingComponent,
 
   ],
   imports: [

@@ -37,8 +37,8 @@
             Select Date:<input class="datebox" type="date" [min]="minDate" [max]="maxDate">
           </div>
             
-          <div class="row">
-            <div *ngFor="let item of Theater_details" class="col-sm-4 p-3">
+          <div >
+            <div *ngFor="let item of theater_data" class="col-sm-4 p-3 w-100">
                 <app-theater-card [Theater_details]="item"> </app-theater-card> 
             </div>
         </div>

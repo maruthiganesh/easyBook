@@ -21,6 +21,7 @@ export class TheaterDetailsComponent implements OnInit{
   public holder:number=0;
   public maxDate:any;
   public date:number=0;
+  public theater_data:any=[];
   public selectedDate: string = '';
   checkedArray: Array<any> = [];
   constructor(private route:ActivatedRoute, private movieService:MovieService,private router:Router,private alerter:AlertifyService,private datePipe: DatePipe){
@@ -28,7 +29,8 @@ export class TheaterDetailsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
+  
+    
     const mD = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
     this.minDate=mD;
     this.date= + this.minDate.substring(8,10);
@@ -42,16 +44,16 @@ export class TheaterDetailsComponent implements OnInit{
     }  
     else if(this.odds.includes(this.month))
     {
-        this.holder=31;
+      this.holder=31;
     }
     else this.holder=32;
 console.log("holder",this.holder);
 
-    if(this.date+7<this.holder)
-      {
-        if(this.date+7<10)
-        this.maxDate=this.minDate.substring(0,8)+"0"+ (this.date+7);
-        else
+if(this.date+7<this.holder)
+{
+  if(this.date+7<10)
+  this.maxDate=this.minDate.substring(0,8)+"0"+ (this.date+7);
+else
         this.maxDate=this.minDate.substring(0,8)+(this.date+7);
       }
       else
@@ -72,15 +74,15 @@ console.log("holder",this.holder);
     this.movieService.getAllDetails().subscribe(
       (data:any) => {
         this.Movie = data;
-
+        
         for(const item of this.Movie){
           if(item.Name===this.movieName)
           {
             this.flag=true;
-          
+            
             this.Movie_details=item;
           }
-    
+          
         }
         if(!this.flag){
           this.router.navigate(['/']);
@@ -93,23 +95,49 @@ console.log("holder",this.holder);
         console.log(error);
       }
       
-    );
-
-    this.movieService.checkedArray$.subscribe(checkedArray => {
-      this.checkedArray = checkedArray;
-    });
-    console.log(this.checkedArray);
-
-    this.movieService.getTheaterDetails().subscribe(
-      data => {
-        this.Theater_details = data;
-      },
-      error => {
+      );
+      
+      this.movieService.checkedArray$.subscribe(checkedArray => {
+        this.checkedArray = checkedArray;
+      });
+      // console.log(this.checkedArray);
+      
+      this.movieService.getTheaterDetails().subscribe(
+        data => {
+          this.Theater_details = data;
+          console.log(this.Theater_details);
+          this.helper_theater();
+        },
+        error => {
         console.log(error);
       }
 
-    );
-    
+      );
+    // console.log(this.Theater_details);
+  }
+
+  helper_theater():void{
+    // console.log(this.Theater_details);
+
+    for(let i=0;i<this.Theater_details.length;i++)
+    {
+      //console.log(this.movieName)
+      // console.log("Tlist",this.Theater_details[i].tList[this.movieName]);
+      // console.log("Screen number",this.Theater_details[i].tList.movieName);
+      if( this.Theater_details[i].tList[this.movieName]!= undefined)
+      {
+        let tname=this.Theater_details[i].tName;
+        console.log(this.Theater_details[i])
+        let x=this.Theater_details[i].tList[this.movieName]
+        console.log(x);
+        this.theater_data=[...this.theater_data,{'tname':tname,'tdetails': this.Theater_details[i].tMovies[x][this.movieName]}];
+        console.log(this.theater_data);
+      }
+
+
+    }
+
+
   }
 
   loggedin(){

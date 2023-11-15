@@ -1,0 +1,10 @@
+.card-body{
+    justify-content: flex-start;
+}
+
+.btn{
+    margin: 8px;
+}
+.tname{
+    width:30%;
+}
