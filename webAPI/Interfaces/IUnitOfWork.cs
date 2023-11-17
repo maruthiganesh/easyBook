@@ -9,6 +9,7 @@ namespace webAPI.Interfaces
     public interface IUnitOfWork
     {
         ITheaterRepository TheaterRepository {get;}
+        IUserRepository UserRepository {get;}
         Task <bool> SaveAsync();
     }
 }

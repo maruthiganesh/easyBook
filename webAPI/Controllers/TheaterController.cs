@@ -10,9 +10,8 @@ using AutoMapper;
 
 namespace webAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TheaterController : ControllerBase
+
+    public class TheaterController : BaseController
     {
       private readonly IMapper mapper;
       private readonly IUnitOfWork uow;

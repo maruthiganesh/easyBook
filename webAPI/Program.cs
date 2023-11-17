@@ -5,6 +5,9 @@ using webAPI.Data.Repo;
 using webAPI.Controllers;
 using webAPI.Data.Interfaces;
 using webAPI.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,18 @@ builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(
   builder.Configuration.GetConnectionString("DefaultConnection")
 ));
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork> ();
+var secretKey= builder.Configuration.GetSection("AppSettings:Key").Value;
+var key=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+  opt.TokenValidationParameters=new TokenValidationParameters{
+    ValidateIssuerSigningKey= true,
+    ValidateIssuer= false,
+    ValidateAudience=false,
+    IssuerSigningKey= key
+  };
+});
+
 
 // Add CORS services
 builder.Services.AddCors(options =>
@@ -46,6 +61,7 @@ app.UseCors("AllowSpecificOrigin");
 //     return next();
 // });
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

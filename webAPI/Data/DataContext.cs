@@ -15,6 +15,7 @@ namespace webAPI.Data
 
           }
           public DbSet <Theater> Theaters {get;set;}
+          public DbSet <User> Users {get;set;}
     }
 }
 
