@@ -28,7 +28,7 @@
 // }
 // }
 // interface MovieDetails {
-  
+
 //   ID: string;
 //   Name: string;
 //   Genre:string;
@@ -40,9 +40,9 @@
 
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map,catchError } from 'rxjs/operators';
+import { Observable, BehaviorSubject,throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +61,24 @@ export class MovieService {
       })
     );
   }
+
+  getCityDetails(): Observable<string[]> {
+    const url = 'http://localhost:5224/api/theater';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.get<string[]>(url, { headers, withCredentials: true }).pipe(
+      map(Data => {
+        let pArray: string[] = [];
+        for (const key in Data) {
+          pArray=[...pArray, Data[key]];
+        }
+        return pArray;
+      })
+    );
+  }
+
 
   getTheaterDetails(): Observable<TheaterDetails[]> {
     return this.http.get<TheaterDetails>('data/theater_details.json').pipe(

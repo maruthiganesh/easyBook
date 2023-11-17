@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../services/movie.service';
 import { take } from 'rxjs';
 import { AlertifyService } from '../services/alertify.service';
@@ -14,14 +14,18 @@ mapper.set("id_kol", "Kolkata");
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent {
+export class NavBarComponent implements OnInit{
 
   constructor(private movieService: MovieService, private alerter:AlertifyService) { }
-
+  ngOnInit(): void {
+    this.movieService.getCityDetails().subscribe(
+      data => console.log(data),
+      error => console.error('Error fetching city details:', error) );
+  }
   onChange(event: any) {
     let element = event.target;
     let eid = element.id;
-   
+
     if (element.checked) {
       this.movieService.checkedArray$.pipe(take(1)).subscribe(checkedArray => {
         if (!checkedArray.includes(mapper.get(eid))) {
@@ -33,15 +37,15 @@ export class NavBarComponent {
     } else  {
       this.movieService.checkedArray$.pipe(take(1)).subscribe(checkedArray => {
         console.log("==checked array in else===")
-        
+
         const index = checkedArray.indexOf(mapper.get(eid));
-        
-        if (index !== -1) {         
+
+        if (index !== -1) {
 
           const updatedArray = checkedArray.slice();
-         
+
           updatedArray.splice(index, 1);
-          
+
           this.movieService.updateCheckedArray(updatedArray);
         }
       });

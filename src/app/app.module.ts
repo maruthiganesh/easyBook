@@ -24,6 +24,7 @@ import { TheaterCardComponent } from './theater-card/theater-card/theater-card.c
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
 import { SeatingComponent } from './seating/seating/seating.component';
+import { ProfileComponent } from './profile/profile/profile.component';
 
 const appRoutes:Routes=[
   {path: '', component: MovieListComponent},
@@ -31,7 +32,8 @@ const appRoutes:Routes=[
   {path:'login',component:UserLoginComponent},
   {path:'register',component:UserRegisterComponent},
   {path:'movie-details/:id',component:TheaterDetailsComponent},
-  {path:'seating',component:SeatingComponent}
+  {path:'seating',component:SeatingComponent},
+  {path:'profile',component:ProfileComponent}
 ]
 
 @NgModule({
@@ -48,6 +50,7 @@ const appRoutes:Routes=[
     TheaterDetailsComponent,
     TheaterCardComponent,
     SeatingComponent,
+    ProfileComponent,
 
   ],
   imports: [

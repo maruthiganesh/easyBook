@@ -6,13 +6,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./theater-card.component.css']
 })
 export class TheaterCardComponent implements OnInit{
-  @Input () Theater_details: any 
+  @Input () Theater_details: any
   @Input () movie_details:any
 
 
   ngOnInit(): void {
 
-      console.log("fytf",this.Theater_details)
+      // console.log("fytf",this.Theater_details)
   }
 
 }

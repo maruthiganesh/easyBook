@@ -25,29 +25,29 @@ export class TheaterDetailsComponent implements OnInit{
   public selectedDate: string = '';
   checkedArray: Array<any> = [];
   constructor(private route:ActivatedRoute, private movieService:MovieService,private router:Router,private alerter:AlertifyService,private datePipe: DatePipe){
-    
+
   }
 
   ngOnInit(): void {
-  
-    
+
+
     const mD = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
     this.minDate=mD;
     this.date= + this.minDate.substring(8,10);
     this.month= + this.minDate.substring(5,7);
-    console.log(typeof(this.date));
-    console.log(typeof(this.month));
+    // console.log(typeof(this.date));
+    // console.log(typeof(this.month));
     if(this.month===2)
     {
       this.holder=29;
-      
-    }  
+
+    }
     else if(this.odds.includes(this.month))
     {
       this.holder=31;
     }
     else this.holder=32;
-console.log("holder",this.holder);
+// console.log("holder",this.holder);
 
 if(this.date+7<this.holder)
 {
@@ -59,53 +59,53 @@ else
       else
       {
         const p=this.date+7-this.holder-1;
-        console.log("p value",p);
+        // console.log("p value",p);
         if(this.month<9)
         this.maxDate=this.minDate.substring(0,5)+"0"+(this.month+1)+"-"+p;
       else
       this.maxDate=this.minDate.substring(0,5)+(this.month+1)+"-"+p;
       }
 
-      console.log(this.minDate);
-      console.log(this.maxDate);
+      // console.log(this.minDate);
+      // console.log(this.maxDate);
 
 
     this.route.params.subscribe(data=>{this.movieName=data['id']});
     this.movieService.getAllDetails().subscribe(
       (data:any) => {
         this.Movie = data;
-        
+
         for(const item of this.Movie){
           if(item.Name===this.movieName)
           {
             this.flag=true;
-            
+
             this.Movie_details=item;
           }
-          
+
         }
         if(!this.flag){
           this.router.navigate(['/']);
           this.alerter.error('Error in movie name');
-          
+
         }
-  
+
       },
       error => {
         console.log(error);
       }
-      
+
       );
-      
+
       this.movieService.checkedArray$.subscribe(checkedArray => {
         this.checkedArray = checkedArray;
       });
       // console.log(this.checkedArray);
-      
+
       this.movieService.getTheaterDetails().subscribe(
         data => {
           this.Theater_details = data;
-          console.log(this.Theater_details);
+          // console.log(this.Theater_details);
           this.helper_theater();
         },
         error => {
@@ -127,11 +127,12 @@ else
       if( this.Theater_details[i].tList[this.movieName]!= undefined)
       {
         let tname=this.Theater_details[i].tName;
-        console.log(this.Theater_details[i])
+        let tlocation=this.Theater_details[i].tLocation;
+        // console.log(this.Theater_details[i])
         let x=this.Theater_details[i].tList[this.movieName]
-        console.log(x);
-        this.theater_data=[...this.theater_data,{'tname':tname,'tdetails': this.Theater_details[i].tMovies[x][this.movieName]}];
-        console.log(this.theater_data);
+        // console.log(x);
+        this.theater_data=[...this.theater_data,{'tname':tname,'tlocation':tlocation,'tdetails': this.Theater_details[i].tMovies[x][this.movieName]}];
+        // console.log(this.theater_data);
       }
 
 
@@ -143,9 +144,9 @@ else
   loggedin(){
     return localStorage.getItem('token');
   }
-  
 
-  
+
+
 
 
 }
