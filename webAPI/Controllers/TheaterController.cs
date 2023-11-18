@@ -30,9 +30,9 @@ namespace webAPI.Controllers
                 select new TheaterDto(){
                   Theater_id=t.Theater_id,
                   Theater_name= t.Theater_name,
-                  Screen_ids=t.Screen_ids,
-                  Theater_location=t.Theater_location,
-                  Movies=t.Movies
+                  // Screen_ids=t.Screen_ids,
+                  Theater_location=t.Theater_location
+                  // Movies=t.Movies
                 };
             return Ok(theaterDto);
         }

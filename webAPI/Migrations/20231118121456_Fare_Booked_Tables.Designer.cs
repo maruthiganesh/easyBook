@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using webAPI.Data;
 
@@ -11,9 +12,11 @@ using webAPI.Data;
 namespace webAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231118121456_Fare_Booked_Tables")]
+    partial class Fare_Booked_Tables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,13 +36,13 @@ namespace webAPI.Migrations
                     b.Property<DateTime>("Date_time")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Fare_id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("FaresFare_id")
+                    b.Property<int>("Fares")
                         .HasColumnType("int");
 
                     b.Property<int>("Screen_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Screen_id1")
                         .HasColumnType("int");
 
                     b.Property<string>("Seat_name")
@@ -48,11 +51,9 @@ namespace webAPI.Migrations
 
                     b.HasKey("Seat_id");
 
-                    b.HasIndex("Fare_id");
+                    b.HasIndex("Fares");
 
-                    b.HasIndex("FaresFare_id");
-
-                    b.HasIndex("Screen_id");
+                    b.HasIndex("Screen_id1");
 
                     b.ToTable("Booked_Seats");
                 });
@@ -72,12 +73,12 @@ namespace webAPI.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int>("Show_id")
+                    b.Property<int>("Shows")
                         .HasColumnType("int");
 
                     b.HasKey("Fare_id");
 
-                    b.HasIndex("Show_id");
+                    b.HasIndex("Shows");
 
                     b.ToTable("Fares");
                 });
@@ -288,18 +289,14 @@ namespace webAPI.Migrations
             modelBuilder.Entity("webAPI.Models.Booked_seats", b =>
                 {
                     b.HasOne("webAPI.Models.Fares", "Fare")
-                        .WithMany()
-                        .HasForeignKey("Fare_id")
+                        .WithMany("Booked_Seats")
+                        .HasForeignKey("Fares")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("webAPI.Models.Fares", null)
-                        .WithMany("Booked_Seats")
-                        .HasForeignKey("FaresFare_id");
-
                     b.HasOne("webAPI.Models.Screens", "Screen")
                         .WithMany("Booked_Seats")
-                        .HasForeignKey("Screen_id")
+                        .HasForeignKey("Screen_id1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -312,7 +309,7 @@ namespace webAPI.Migrations
                 {
                     b.HasOne("webAPI.Models.Shows", "Show")
                         .WithMany()
-                        .HasForeignKey("Show_id")
+                        .HasForeignKey("Shows")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

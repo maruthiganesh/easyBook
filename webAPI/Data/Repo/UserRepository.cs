@@ -17,7 +17,7 @@ namespace webAPI.Data.Repo
       }
 
       public async Task<User> Authenticate(string user_mailId, string user_password){
-            return await dc.Users.FirstOrDefaultAsync(x=> x.user_mailId == user_mailId && x.user_password== user_password);
+            return await dc.Users.FirstOrDefaultAsync(x=> x.User_mailId == user_mailId && x.User_password== user_password);
       }
 
     }

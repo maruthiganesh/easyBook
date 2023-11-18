@@ -11,9 +11,10 @@ namespace webAPI.Models
         [Key]
         public int Theater_id { get; set; }
         public string Theater_name { get; set; }
-        public string Screen_ids { get; set; }
+        // public string Screen_ids { get; set; }
         public string Theater_location { get; set; }
-        public string Movies {get;set;}
+        // public string Movies {get;set;}
+        public ICollection<Screens> Screens {get;set;}
 
     }
 }

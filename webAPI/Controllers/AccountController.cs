@@ -34,7 +34,7 @@ namespace webAPI.Controllers
               return Unauthorized();
             }
             var loginResp= new LoginRespDto();
-            loginResp.user_mailId=user.user_mailId;
+            loginResp.user_mailId=user.User_mailId;
             loginResp.token=CreateJWT(user);
             return Ok(loginResp);
 
@@ -44,8 +44,8 @@ namespace webAPI.Controllers
           var secretKey= configuration.GetSection("AppSettings:Key").Value;
           var key=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
           var claims= new Claim[] {
-            new Claim(ClaimTypes.Name,user.user_mailId),
-            new Claim(ClaimTypes.NameIdentifier,user.user_id.ToString())
+            new Claim(ClaimTypes.Name,user.User_mailId),
+            new Claim(ClaimTypes.NameIdentifier,user.User_id.ToString())
           };
           var signingCredentials= new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
           var tokenDiscriptor= new SecurityTokenDescriptor{
