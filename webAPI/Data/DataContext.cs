@@ -25,6 +25,7 @@ namespace webAPI.Data
           public DbSet <Shows> Shows {get;set;}
           public DbSet <Theater> Theaters {get;set;}
           public DbSet <User> Users {get;set;}
+          public DbSet <Theater_Movie_mapper> Theater_Movie_Mappers {get;set;}
 
 
           protected override void OnModelCreating(ModelBuilder modelBuilder)

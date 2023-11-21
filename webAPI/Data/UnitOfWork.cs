@@ -44,6 +44,8 @@ namespace webAPI.Data
         public IShowsRepository ShowsRepository =>
         new ShowsRepository(dc);
 
+        public ITMmapperRepository TMmapperRepository => 
+        new TMmapperRepository(dc);
 
 
         public async Task<bool> SaveAsync(){

@@ -25,5 +25,13 @@ namespace webAPI.Data.Repo
         return await dc.Movies.FindAsync(id);
       }
 
+      public async Task<IEnumerable<Movies>> FindMoviesList(List<int> Movie_ids){
+        return await dc.Movies
+            .Where(x=> Movie_ids.Any(loc => loc == x.Movie_id))
+            .ToListAsync();
+            
+      }
+
+
     }
 }

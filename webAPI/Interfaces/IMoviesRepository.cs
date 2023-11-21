@@ -9,5 +9,7 @@ namespace webAPI.Interfaces
     {
         Task<IEnumerable<Movies>> GetMoviesAsync();
       Task<Movies> FindMovies(int id);
+
+      Task<IEnumerable<Movies>> FindMoviesList(List<int> Movie_ids);
     }
 }

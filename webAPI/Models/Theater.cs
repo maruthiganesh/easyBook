@@ -15,6 +15,7 @@ namespace webAPI.Models
         public string Theater_location { get; set; }
         // public string Movies {get;set;}
         public ICollection<Screens> Screens {get;set;}
+        public Theater_Movie_mapper Theater_Movie_Mapper {get;set;}
 
     }
 }

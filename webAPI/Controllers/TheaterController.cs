@@ -13,6 +13,8 @@ namespace webAPI.Controllers
 
     public class TheaterController : BaseController
     {
+      // public string [] locs={"Hyderabad","Bangalore"};
+      // public List<int> tids=[1,2];
       private readonly IMapper mapper;
       private readonly IUnitOfWork uow;
         public TheaterController(IMapper mapper, IUnitOfWork uow)
@@ -34,9 +36,18 @@ namespace webAPI.Controllers
                   Theater_location=t.Theater_location
                   // Movies=t.Movies
                 };
+
+            Response.Headers.Add("Access-Control-Allow-Credentials","true");
             return Ok(theaterDto);
         }
+        
+        // [HttpGet("/test")]
 
+        // public async Task<IActionResult> GetLocations()
+        // {
+        //   var x= await uow.TMmapperRepository.FindMovieIDs(tids);
+        //   return Ok(x);
+        // }
         [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateTheaters(int id,TheaterDto theaterDto){
           var theaterFromDb=await uow.TheaterRepository.FindTheater(id);

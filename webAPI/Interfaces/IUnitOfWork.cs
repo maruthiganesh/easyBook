@@ -18,6 +18,7 @@ namespace webAPI.Interfaces
         ISSmapperRepository SSmapperRepository {get;}
         IScreensRepository ScreensRepository {get;}
         IShowsRepository ShowsRepository {get;}
+        ITMmapperRepository TMmapperRepository{get;}
 
         Task <bool> SaveAsync();
     }

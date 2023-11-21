@@ -17,5 +17,6 @@ namespace webAPI.Models
         public string Release_date {get;set;}
 
         public Shows Shows {get;set;}
+        public Theater_Movie_mapper Theater_Movie_Mapper {get;set;}
     }
 }

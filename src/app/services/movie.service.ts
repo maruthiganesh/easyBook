@@ -54,6 +54,7 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   getAllDetails(): Observable<MovieDetails[]> {
+    const url = 'http://localhost:5224/api/movies';
     return this.http.get<MovieDetails>('data/movie_details.json').pipe(
       map((data: MovieDetails) => {
         const movieArray: MovieDetails[] = Object.values(data);
@@ -68,7 +69,7 @@ export class MovieService {
       'Content-Type': 'application/json'
     });
 
-    return this.http.get<string[]>(url, { headers, withCredentials: true }).pipe(
+    return this.http.get<string[]>(url, { headers }).pipe(
       map(Data => {
         let pArray: string[] = [];
         for (const key in Data) {
@@ -95,15 +96,13 @@ export class MovieService {
 }
 
 interface MovieDetails {
-  ID: string;
+  ID: Number;
   Name: string;
   Genre: string;
-  Type: string;
   Language:string;
-  Rating:string;
   Duration:string;
   Release_date:string;
-  City: string;
+  
 }
 
 interface TheaterDetails{

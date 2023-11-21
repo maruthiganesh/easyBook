@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using webAPI.Data;
 using webAPI.Dto;
 using webAPI.Interfaces;
+using webAPI.Models;
 
 namespace webAPI.Controllers
 {
@@ -32,6 +34,16 @@ namespace webAPI.Controllers
                 return movieDto;
             }).ToList();
             return Ok(moviesDto);
+        }
+
+        [HttpPost("")]
+        public async Task <IActionResult> PostLocations([FromBody] LocationHelper ReqObj)
+        {
+              var tids= await uow.TheaterRepository.FindTheaterIDs(ReqObj.locations);
+              var movieIds= await uow.TMmapperRepository.FindMovieIDs(tids);
+              var movieData=await uow.MoviesRepository.FindMoviesList(movieIds);
+              return Ok(movieData);
+            
         }
 
     }

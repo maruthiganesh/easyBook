@@ -35,13 +35,19 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 
 // Add CORS services
+
+// var Access-Control-Allow-Credentials= true;
+
 builder.Services.AddCors(options =>
 {
+
     options.AddPolicy("AllowSpecificOrigin", builder =>
     {
         builder.WithOrigins("http://localhost:4200")
                .AllowAnyHeader()
-               .AllowAnyMethod();
+               .AllowAnyMethod()
+               .AllowCredentials()
+               .WithExposedHeaders("Access-Control-Allow-Credentials");
     });
 });
 

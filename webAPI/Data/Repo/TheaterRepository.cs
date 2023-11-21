@@ -23,9 +23,15 @@ namespace webAPI.Data.Repo
         return await dc.Theaters.FindAsync(id);
       }
 
+      public async Task<List<int>> FindTheaterIDs(string[] locations)
+      {
+        var data= await dc.Theaters
+                        .Where(x=> locations.Any(loc => loc == x.Theater_location))
+                        .Select(x=> x.Theater_id)
+                        .ToListAsync();
+        return data;
 
-
-
+      }
 
     }
 }

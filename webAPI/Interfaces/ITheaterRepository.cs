@@ -9,6 +9,7 @@ namespace webAPI.Data.Interfaces
     {
       Task<IEnumerable<Theater>> GetTheatersAsync();
       Task<Theater> FindTheater(int id);
+      Task<List<int>> FindTheaterIDs(string[] locations);
 
 
     }
