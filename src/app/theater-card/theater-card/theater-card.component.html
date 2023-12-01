@@ -2,18 +2,22 @@
     <div class="card w-100">
         <div class="card-body d-flex">
             <div class="tname">
-              <p style="font-weight: bold;">{{Theater_details.tname}}</p>
-              <p>Location: {{Theater_details.tlocation}}</p>
+              <p style="font-weight: bold;">{{Theater_details.theater_name}}</p>
+              <p>Location: {{Theater_details.theater_location}}</p>
+              <p>Screen Name:{{Theater_details.screen_name}}</p>
             </div>
 
             <!-- <p>{{Theater_details.tdetails.timings}}</p> -->
-            <div *ngFor="let item of Theater_details.tdetails.timings" >
+            <div *ngFor="let item of Theater_details.times" >
 
-                <button type="button" class="btn btn-outline-success">{{item}}</button>
-
+                <button type="button" class="btn btn-outline-success" (click)="pickedDate ? selectTheater($event, Theater_details, item) : selectDate()">{{item}}</button>
+                
             </div>
 
         </div>
     </div>
     <!-- <p>{{Theater_details.tMovies.screen1[0]}}</p> -->
 </div>
+
+
+

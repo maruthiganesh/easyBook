@@ -9,6 +9,7 @@ import { MovieService } from '../services/movie.service';
 export class MovieListComponent implements OnInit {
   checkedArray: Array<any> = [];
   Movie: Array<any>;
+  tA:Array<any>=[];
 
   constructor(private movieService: MovieService) {
     this.Movie = [];
@@ -17,19 +18,32 @@ export class MovieListComponent implements OnInit {
   ngOnInit(): void {
     this.movieService.checkedArray$.subscribe(checkedArray => {
       this.checkedArray = checkedArray;
-    });
-    console.log(this.checkedArray);
+      console.log(this.checkedArray)
+      this.tA=this.checkedArray;
 
-
-    this.movieService.getAllDetails().subscribe(
+      if(this.checkedArray.length==0)
+    {
+        this.tA=["Hyderabad","Kolkata","Bangalore"];
+    }
+    this.movieService.getAllDetails(this.tA).subscribe(
       data => {
+        // const serializedData = JSON.stringify(data);
+        // console.log(serializedData);
+        // console.dir(data);
         this.Movie = data;
+        console.log("hello",this.Movie);
+
       },
       error => {
         console.log(error);
       }
     );
 
-  
+    });
+
+    // console.log(this.checkedArray);
+
+
+
   }
 }

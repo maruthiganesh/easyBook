@@ -27,7 +27,7 @@ body {
   flex-direction: column
 }
 
-.movie-container select {
+/* .movie-container select {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -36,7 +36,7 @@ body {
   margin-bottom: 40px;
   font-size: 14px;
   border-radius: 5px;
-}
+} */
 
 .container {
   perspective: 1000px;
@@ -48,8 +48,8 @@ body {
 }
 
 
-
 .seat {
+  text-align: center;
   background-color: #ffff;
   border: 0.1px solid black;
   height: 22px;
@@ -57,22 +57,60 @@ body {
   margin: 3px;
   border-radius: 6px;
   box-sizing: border-box;
-  
+  text-align:center;
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
-.selected {
+.selected{
+  height: 22px;
+  width: 22px;
+  background-color: green;
+  font-size:x-small;
+
+  color:white;
+
+}
+
+
+.selected_op {
     border: none;
     height: 22px;
   width: 22px;
   margin: 3px;
   border-radius: 6px;
   background-color: green;
-  color:white;
-  font-size:x-small;
-  text-align: center;
+
+
+}
+.details{
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+.selected-seats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.occupied {
+
+.seat-item {
+  padding: 6px 10px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+.confirm_button{
+  display: flex;
+  justify-content: center;
+}
+
+
+.occupied{
   background-color: #777;
   color:#777;
   font-size: 0%;
@@ -125,11 +163,12 @@ body {
 
 .screen {
   background: rgb(155, 206, 250);
-  height: 90px;
-  width: 60%;
-  margin: 15px 0;
+  height: 50px;
+  width: 80%;
+  margin: 10px 0;
   transform: rotateX(-45deg);
   box-shadow: 0 3px 10px rgba(255,255,255,0.7);
+
 }
 
 p.text {

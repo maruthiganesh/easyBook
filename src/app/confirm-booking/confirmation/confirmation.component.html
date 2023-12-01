@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card border-success" style="width: 24rem;">
+
+       <div class="card-body">
+          <h5 class="card-title">Booking Successful</h5>
+          <hr class="line">
+          <h6 class="card-subtitle mb-2 text-muted">Booking Details:</h6>
+          <p class="card-text">Movie Name: {{movieDetails.movie_name}}</p>
+          <h6>Theater Name: {{theaterDetails.theater_name}}</h6>
+          <p>Theater Location: {{theaterDetails.theater_location}}</p>
+          <p>Screen Name: {{theaterDetails.screen_name}}</p>
+          <p>Date: {{pickedDate}}</p>
+          <p>Show Time: {{showTime}}</p>
+          <p>Total seats:{{seatDetails.length}}</p>
+          <p>Seats: {{seatDetails}}</p>
+          <p>Total Amount: Rs {{totalAmount}}</p>
+        </div>
+     </div>
+   </div>
+  </div>
+  <br>
+  <div class="btns">
+    <button type="button" routerLink="/my-bookings" class="btn btn-warning">My Bookings</button>
+    <button type="button" routerLink="/" class="btn btn-primary">Home</button>
+  </div>
+</div>
+

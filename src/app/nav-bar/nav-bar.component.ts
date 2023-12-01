@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../services/movie.service';
 import { take } from 'rxjs';
 import { AlertifyService } from '../services/alertify.service';
+import { Router } from '@angular/router';
 
 
 let mapper = new Map();
@@ -16,11 +17,11 @@ mapper.set("id_kol", "Kolkata");
 })
 export class NavBarComponent implements OnInit{
 
-  constructor(private movieService: MovieService, private alerter:AlertifyService) { }
+  constructor(private movieService: MovieService, private alerter:AlertifyService,private router:Router) { }
   ngOnInit(): void {
-    this.movieService.getCityDetails().subscribe(
-      data => console.log(data),
-      error => console.error('Error fetching city details:', error) );
+    // this.movieService.getCityDetails().subscribe(
+    //   data => console.log(data),
+    //   error => console.error('Error fetching city details:', error) );
   }
   onChange(event: any) {
     let element = event.target;
@@ -48,6 +49,7 @@ export class NavBarComponent implements OnInit{
 
           this.movieService.updateCheckedArray(updatedArray);
         }
+
       });
     }
   }
@@ -57,6 +59,8 @@ export class NavBarComponent implements OnInit{
   }
   onLogout(){
     localStorage.removeItem('token');
+    this.router.navigate(["/"]);
     this.alerter.success('logged out Successfully');
+
   }
 }

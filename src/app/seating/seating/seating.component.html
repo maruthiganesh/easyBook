@@ -1,123 +1,86 @@
 <div class="movie-container">
     <!-- <label>Pick a movie: </label> -->
-    <select id="movie" #movieSelect>
-        
+    <h4>Movie Name: {{movieDetails.movie_name}}</h4>
+    <div class="details">
+      <h6>Theater Name: {{theaterDetails.theater_name}}</h6>
+      <p>Theater Location: {{theaterDetails.theater_location}}</p>
+      <p>Screen Name: {{theaterDetails.screen_name}}</p>
+      <p>Date: {{pickedDate}}</p>
+      <p>Show Time: {{showTime}}</p>
+    </div>
+
+    <select id="movie" #movieSelect style="display: none;">
+
       </select>
-      
-    
+
+    <br><br><br>
     <ul class="showcase">
       <li>
         <div class="seat"></div>
         <small>Available</small>
       </li>
       <li>
-        <div class="seat selected"></div>   
+        <div class="seat selected_op"></div>
         <small>Selected</small>
       </li>
       <li>
         <div class="seat occupied"></div>
         <small>Occupied</small>
-      </li>    
+      </li>
     </ul>
 
-    
+
 
     <div class="container">
       <div *ngFor="let i of StempRow"  class="row">
-        <div *ngFor="let j of getColumns(); " class="seat" 
-             [ngClass]="{'occupied': isSeatOccupied(i, j)}" 
-             [attr.id]="getSeatId(i,j)">
-             {{getSeatId(i,j)}}
+        <div *ngFor="let j of getColumns(); " class="seat"
+             [ngClass]="{'occupied': isSeatOccupied(i, j), 'selected': isSelected(getRegularSeatId(i, j))}"
+             [attr.id]="getRegularSeatId(i, j)"
+             (click)="toggleSelectedSeat(getRegularSeatId(i, j))">
+             {{getRegularSeatId(i, j).substring(1)}}
 
         </div>
       </div>
 
-      <div class="line"></div>  
+      <div class="line"></div>
 
         <div *ngIf="isBalconyAvailable" class="balcony">
           <div *ngFor="let rowIndex of getBalconyRows(); let i = index" class="row">
-            <div *ngFor="let colIndex of getBalconyColumns(); let j = index" class="seat balcony" 
-                 [ngClass]="{'occupied': isSeatOccupiedBalcony(i, j)}" 
-                 [attr.id]="getSeatIdBalcony(i, j)">
+            <div *ngFor="let colIndex of getBalconyColumns(); let j = index" class="seat balcony"
+                 [ngClass]="{'occupied': isSeatOccupiedBalcony(i, j), 'selected': isSelected(getBalconySeatId(i, j))}"
+                 [attr.id]="getBalconySeatId(i, j)"
+                 (click)="toggleSelectedSeat(getBalconySeatId(i, j))">
                  {{j+1}}
-            </div> 
-          </div> 
-          <br><br><br>
-        <!-- </div>
-        <div class="screen"></div>
-    <button class="btn btn-outline-success"></button>
+            </div>
+          </div>
 
 
-      <!-- <div class="row">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-        </div>
-        <div class="row">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-        </div>
-        <div class="row">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-        </div>
-        <div class="row">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-        </div>
-        <div class="row">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-        </div>
-        <div class="row">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-          <div class="seat"></div> -->
-      
-          <!-- Add #count and #total to the spans -->
-<p class="text">
-    You have selected <span #count id="count">0</span> seats for the total price of Rs.
-    <span #total id="total">0</span>
-  </p>
-  
-          
-          
-    
+
     </div>
-    
+
+    <div class="container screen">
+
+    </div>
+
+    <p class="text">
+      You have selected <span #count id="count">{{ selectedSeats.length }}</span> seats for the total price of Rs.
+      <span #total id="total">{{ TotalPrice }}</span>
+    </p>
+
+    <div *ngIf="selectedSeats.length > 0">
+      <h3 class="confirm_button">Selected Seats:</h3>
+      <div class="selected-seats">
+
+        <span *ngFor="let seatId of selectedSeats" class="seat-item">
+          {{ seatId }}
+        </span>
+      </div>
+      <br>
+     <div class="confirm_button"><button type="button" class="btn btn-outline-success " routerLink="/Confirm_Booking/{{pickedDate}}" (click)="confirm_booking()">Confirm Booking</button></div>
+
+    </div>
+
+    <router-outlet></router-outlet>
+
+
   </div>
-  

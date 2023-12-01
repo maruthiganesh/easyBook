@@ -11,16 +11,16 @@
                       </svg> -->
 
 
-                    <h3 class="mb-3">{{Movie_details?.Name}}</h3>
+                    <h3 class="mb-3">{{Movie?.movie_name}}</h3>
               </div>
               <div class="d-flex" style="justify-content: space-around;">
-              <p class="small mb-0">Language: {{Movie_details?.Language}}</p>
-                <strong> Genre: {{Movie_details?.Genre}}</strong>
-                <p>Duration: {{Movie_details?.Duration}}</p>
+              <p class="small mb-0">Language: {{Movie?.language}}</p>
+                <strong> Genre: {{Movie?.genre}}</strong>
+                <p>Duration: {{Movie?.run_time}} mins</p>
                 </div>
               <hr class="my-4">
               <div class="d-flex" style="justify-content: space-between;">
-                <p class="mb-0 ">Release Date: {{Movie_details?.Release_date}}</p>
+                <p class="mb-0 ">Release Date: {{Movie?.release_date}}</p>
                 <span *ngIf="loggedin()">Like
                 <button  type="button" class="btn liker btn-sm btn-floating">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
@@ -34,15 +34,24 @@
 
 
           <div class="datepicker">
-            Select Date:<input class="datebox" type="date" [min]="minDate" [max]="maxDate">
+            Select Date:
+            <input class="datebox"
+
+                   type="date"
+                   [min]="minDate"
+                   [max]="maxDate"
+                   [(ngModel)]="pickedDate"
+                   [ngClass]="{'required-border': !pickedDate}">
+                   
           </div>
 
-          <div >
-            <div *ngFor="let item of theater_data" class="col-sm-4 p-3 w-100">
-                <app-theater-card [Theater_details]="item"> </app-theater-card>
-            </div>
-        </div>
 
+          <div >
+            <div *ngFor="let item of  theaterArray" class="col-sm-4 p-3 w-100">
+                <app-theater-card [pickedDate]="pickedDate" [movie_details]="Movie" [TheaterId]="item[0]" [Theater_details]="item[1]"> </app-theater-card>
+            </div>
+
+        </div>
         </div>
       </div>
     </div>

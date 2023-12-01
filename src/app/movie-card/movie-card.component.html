@@ -2,13 +2,13 @@
 <body>
     <div class="card" style="width: 18rem;">
         <div class="img-wrapper">
-            <img src="../../assets/img.jpg" class="card-img-top" alt="image">
+            <img src="../../assets/img.jpg" class="card-img-top img-fluid" alt="image">
         </div>
         <div class="card-body">
-          <h2 class="card-title">{{movie_details.Name}}</h2>
-          <p class="card-text">Genre: {{movie_details.Genre}}</p>
-          <p class="card-text">Language: {{movie_details.Language}}</p>
-          <a  class="btn btn-primary" routerLink="/movie-details/{{movie_details.Name}}">Book Now</a>
+          <h2 class="card-title">{{movie_details.movie_name}}</h2>
+          <p class="card-text">Genre: {{movie_details.genre}}</p>
+          <p class="card-text">Language: {{movie_details.language}}</p>
+          <a  class="btn btn-primary" routerLink="/movie-details/{{movie_details.movie_name}}_{{movie_details.movie_id}}">Book Now</a>
         </div>
       </div>
 </body>

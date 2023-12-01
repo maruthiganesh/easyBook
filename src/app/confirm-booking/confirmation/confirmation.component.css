@@ -1,0 +1,25 @@
+hr{
+  border: none;
+  height:5px;
+  background-color: rgb(35, 211, 0);
+}
+.row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card{
+  display: flex;
+
+  /* margin-left: auto; */
+
+  /* margin-top: auto; */
+
+}
+.container{
+  margin-top: 10%;
+}
+.btns{
+  display:flex;
+  justify-content: space-between;
+}

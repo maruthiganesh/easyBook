@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+public user_Data:any;
+public mail_id:any;
+  constructor(private http: HttpClient) { }
+  getuserDetails(mailid:string){
+    const url = `http://localhost:5224/api/account/${mailid}`;
+    this.user_Data=this.http.get<any>(url);
 
-  constructor() { }
-
+  }
   addUser(user:User){
     let users: any[] =[]
     const usersData = localStorage.getItem('Users');

@@ -1,1 +1,74 @@
-<p>profile works!</p>
+<div class="container">
+  <div class="main-body">
+      <div class="row gutters-sm">
+          <div class="col-md-4 mb-3">
+              <div class="card">
+                  <div class="card-body">
+                      <!-- Card 1 content -->
+                      <div class="d-flex flex-column align-items-center text-center">
+                          <div class="mt-3">
+                              <h4>{{user?.userName}}</h4>
+                              <p class="text-secondary mb-1">Welcome to EasyBook Profile</p>
+                              <!-- <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                              <button class="btn btn-primary">Follow</button>
+                              <button class="btn btn-outline-primary">Message</button> -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-8 mb-3">
+              <div class="card">
+                  <div class="card-body">
+                      <!-- Card 2 content -->
+                      <div class="row">
+                          <div class="col-sm-3">
+                              <h6 class="mb-0">Full Name</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                              {{user?.userName}}
+                          </div>
+                      </div>
+                      <hr>
+                      <!-- Other details -->
+                      <!-- Adjust content as needed -->
+                      <div class="row">
+                          <!-- Add rows for different details -->
+                          <div class="col-sm-3">
+                              <h6 class="mb-0">Email</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            {{user?.email}}
+                          </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                          <div class="col-sm-3">
+                              <h6 class="mb-0">Phone</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                              {{user?.mobile}}
+                          </div>
+                      </div>
+                      <!-- Add more rows for different details -->
+                      <hr>
+                      <div class="row">
+                          <div class="col-sm-3">
+                              <h6 class="mb-0">Location</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                              Hyderabad
+                          </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <a class="btn btn-info" target="__blank" href="#">Edit</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

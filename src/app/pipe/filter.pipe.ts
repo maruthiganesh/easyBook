@@ -11,8 +11,8 @@ export class FilterPipe implements PipeTransform {
     return value;
   console.log(filter);
   for(const item of value){
-    
-    if(filter.includes(item['City']))
+
+    if(filter.includes(item['location']))
     {
       resultArray.push(item);
     }
